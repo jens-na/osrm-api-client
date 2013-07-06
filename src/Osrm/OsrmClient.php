@@ -10,7 +10,12 @@ class OsrmClient {
         $this->server = $server;
     }
     
-    public function getNearestStreetLocation(Coordinate $coordinate) {
+    /**
+     * 
+     * @param \Osrm\Coordinate $coordinate
+     * @return type
+     */
+    public function getNearestStreetPoint(Coordinate $coordinate) {
         $this->prepareServerUrl();
         
         $this->server = $this->server . 'nearest?' . $coordinate;
@@ -26,7 +31,12 @@ class OsrmClient {
         return $resp;
     }
     
-    public function getNearestRoadNetwork(Coordinate $coordinate) {
+    /**
+     * 
+     * @param \Osrm\Coordinate $coordinate
+     * @return type
+     */
+    public function getNearestNodePoint(Coordinate $coordinate) {
         $this->prepareServerUrl();
         
         $this->server = $this->server . 'locate?' . $coordinate;   
@@ -40,6 +50,13 @@ class OsrmClient {
         curl_close($curl);
         
         return $resp;
+    }
+    
+    /**
+     * 
+     */
+    public function getRoute() {
+        
     }
     
     private function prepareServerUrl() {

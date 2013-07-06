@@ -22,10 +22,12 @@ class Coordinate {
     
     public function setLongitude($longitude) {
         $this->longitude = $longitude;
+        return $this;
     }
     
     public function setLatitude($latitude) {
         $this->latitude = $latitude;
+        return $this;
     }
     
     public function __toString() {
