@@ -9,14 +9,7 @@ Overview
 - nearest (nearest point on any street segment of the road network)
 
 ###Installation
-To add <tt>osrm-api-client</tt> as a locally per-project dependency you can insert the
-following code to your composer.json file:
-
-    {
-        "require": {
-            "jens-na/osrm-api-client": "1.0.0"
-        },
-    }
+- (under development)
 
 ###API Usage Policy
 If you are using the server **router.project-osrm.org** with this API client, please read the 
@@ -25,7 +18,10 @@ Usage
 =====
 
 ###viaroute
-
+    $client = new Osrm\OsrmClient('http://server:5000');
+    $from = new Osrm\Coordinate(50.142739,9.122257);
+    $to = new Osrm\Coordinate(50.139631,9.107151);
+    $route = $this->obj->getRoute($from, $to);
 
 ###locate
 
@@ -38,7 +34,14 @@ Usage
     $client = new Osrm\OsrmClient('http://server:5000');
     $mylocation = new Osrm\Coordinate(9.305283, 50.344735);
     $nearestStreet = $client->getNearestStreetPoint($mylocation);
-\Coordinate(52.4224,15.33308
+
+References
+==========
+- [OSRM Server API](https://github.com/DennisOSRM/Project-OSRM/wiki/Server-api)
+- [OSRM Json Output](https://github.com/DennisOSRM/Project-OSRM/wiki/Output-json)
+- [OSRM Turn instructions](https://github.com/DennisOSRM/Project-OSRM/blob/master/DataStructures/TurnInstructions.h)
+- [OSRM API Usage Policy](https://github.com/DennisOSRM/Project-OSRM/wiki/API%20Usage%20Policy)
+
 License and Copyright
 =====================
 Licensed under the GNU General Public License 3.

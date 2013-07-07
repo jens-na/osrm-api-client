@@ -2,10 +2,15 @@
 
 namespace Osrm;
 
+/**
+ * A coordinate class to store longitude, latiude and a name
+ * @author Jens Nazarenus <jens@0x6a.de>
+ */
 class Coordinate {
     
     private $longitude = 0.0;
     private $latitude = 0.0;
+    private $name = "";
     
     public function __construct($latitude, $longitude) {
         $this->longitude = $longitude;
@@ -27,6 +32,15 @@ class Coordinate {
     
     public function setLatitude($latitude) {
         $this->latitude = $latitude;
+        return $this;
+    }
+    
+    public function getName() {
+        return $this->name;
+    }
+
+    public function setName($name) {
+        $this->name = $name;
         return $this;
     }
     

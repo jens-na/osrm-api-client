@@ -32,9 +32,23 @@ class OsrmClient {
         ));
         
         $resp = curl_exec($curl);
+        echo($resp);
         curl_close($curl);
+        $json = json_decode($resp);
         
-        return $resp;
+        if($json->status === 0) {
+            $latitude = $json->mapped_coordinate[0];
+            $longitude = $json->mapped_coordinate[1];
+            $name = $json->name;
+            
+            $retCoord = new Coordinate($latitude, $longitude);
+            $retCoord->setName($name);
+            
+            return $retCoord;
+        } else {
+            throw new OsrmException("Osrm status error", $json->{'status'});
+            return null;
+        }
     }
     
     /**
@@ -57,7 +71,21 @@ class OsrmClient {
         $resp = curl_exec($curl);
         curl_close($curl);
         
-        return $resp;
+        $json = json_decode($resp);
+        
+        if($json->status === 0) {
+            $latitude = $json->mapped_coordinate[0];
+            $longitude = $json->mapped_coordinate[1];
+            $name = $json->name;
+            
+            $retCoord = new Coordinate($latitude, $longitude);
+            $retCoord->setName($name);
+            
+            return $retCoord;
+        } else {
+            throw new OsrmException("Osrm status error", $json->{'status'});
+            return null;
+        }
     }
     
     /**
@@ -71,9 +99,8 @@ class OsrmClient {
     public function getRoute() {
         $this->prepareServerUrl();
         $requestUrl = $this->server . 'viaroute?';
-        
         if(func_num_args() < 2) {
-            throw new OsrmException('A minimum of two arguments must be provided.', 1);
+            throw new OsrmException('A minimum of two arguments must be provided.', 2);
         }
         
         for($j = 0; $j < func_num_args(); $j++) {
@@ -96,7 +123,39 @@ class OsrmClient {
         $resp = curl_exec($curl);
         curl_close($curl);
         
-        return $resp;
+        $json = json_decode($resp);
+        
+        //var_dump($json);
+        
+        if($json->status === 0) {
+            $route = new Route();
+            $route->setEndPoint($json->route_summary->end_point);
+            $route->setStartPoint($json->route_summary->start_point);
+            $route->setTotalTime($json->route_summary->total_time);
+            $route->setTotalDistance($json->route_summary->total_distance);
+            $route->setRouteGeometry($json->route_geometry);
+            
+            $instructionsJson = $json->route_instructions;
+            $instructions = array();
+            foreach($instructionsJson as $instrObj) {
+                $instruction = new DrivingInstruction();
+                $instruction->setTurnInstruction($instrObj[0]);
+                $instruction->setWayName($instrObj[1]);
+                $instruction->setLength($instrObj[2]);
+                $instruction->setPosition($instrObj[3]);
+                $instruction->setTime($instrObj[4]);
+                $instruction->setLengthUnit($instrObj[5]);
+                $instruction->setDirection($instrObj[6]);
+                $instruction->setAzimuth($instrObj[7]);
+                array_push($instructions, $instruction);
+            }
+            $route->setRouteInstructions($instructions);
+            
+            return $route;
+        } else {
+            throw new OsrmException("Osrm status error", $json->{'status'});
+            return null;
+        }
     }
     
     /**

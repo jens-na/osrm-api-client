@@ -3,62 +3,14 @@
 namespace Osrm;
 
 class Route {
-    
-    private $from;
-    private $to;
-    
-    private $status;
-    private $statusMessage;
-    
+        
     private $routeGeometry;
-    
     private $totalDistance;
     private $totalTime;
     private $startPoint;
     private $endPoint;
-    
     private $routeInstructions;
-    
-    public function __construct(Coordinate $from, Coordinate $to) {
-        $this->from = $from;
-        $this->to = $to;
-    }
-    
-    public function getFrom() {
-        return $this->from;
-    }
 
-    public function setFrom($from) {
-        $this->from = $from;
-        return $this;
-    }
-
-    public function getTo() {
-        return $this->to;
-    }
-
-    public function setTo($to) {
-        $this->to = $to;
-        return $this;
-    }
-
-    public function getStatus() {
-        return $this->status;
-    }
-
-    public function setStatus($status) {
-        $this->status = $status;
-        return $this;
-    }
-
-    public function getStatusMessage() {
-        return $this->statusMessage;
-    }
-
-    public function setStatusMessage($statusMessage) {
-        $this->statusMessage = $statusMessage;
-        return $this;
-    }
 
     public function getRouteGeometry() {
         return $this->routeGeometry;
