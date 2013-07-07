@@ -4,6 +4,7 @@ Overview
 [OSRM Server API](https://github.com/DennisOSRM/Project-OSRM/wiki/Server-api).
 
 [![Latest Unstable Version](https://poser.pugx.org/jens-na/osrm-api-client/v/unstable.png)](https://packagist.org/packages/jens-na/osrm-api-client)
+[![Total Downloads](https://poser.pugx.org/jens-na/osrm-api-client/downloads.png)](https://packagist.org/packages/jens-na/osrm-api-client)
 
 ###Features
 - viaroute (computation of the shortest path on the road network between two coordinates)
