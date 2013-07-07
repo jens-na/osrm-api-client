@@ -7,7 +7,7 @@ class Coordinate {
     private $longitude = 0.0;
     private $latitude = 0.0;
     
-    public function __construct($longitude, $latitude) {
+    public function __construct($latitude, $longitude) {
         $this->longitude = $longitude;
         $this->latitude = $latitude;
     }

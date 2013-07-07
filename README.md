@@ -38,7 +38,7 @@ Usage
     $client = new Osrm\OsrmClient('http://server:5000');
     $mylocation = new Osrm\Coordinate(9.305283, 50.344735);
     $nearestStreet = $client->getNearestStreetPoint($mylocation);
-
+\Coordinate(52.4224,15.33308
 License and Copyright
 =====================
 Licensed under the GNU General Public License 3.
