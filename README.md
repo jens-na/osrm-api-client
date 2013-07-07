@@ -3,6 +3,8 @@ Overview
 **osrm-api-client** is a an open source PHP implementation of the 
 [OSRM Server API](https://github.com/DennisOSRM/Project-OSRM/wiki/Server-api).
 
+[![Latest Unstable Version](https://poser.pugx.org/jens-na/osrm-api-client/v/unstable.png)](https://packagist.org/packages/jens-na/osrm-api-client)
+
 ###Features
 - viaroute (computation of the shortest path on the road network between two coordinates)
 - locate (nearest node of the road network)
@@ -14,7 +16,7 @@ following code to your composer.json file:
 
     {
         "require": {
-            "jens-na/osrm-api-client": "1.0.0-alpha"
+            "jens-na/osrm-api-client": "dev-master"
         },
     }
 
