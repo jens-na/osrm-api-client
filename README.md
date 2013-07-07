@@ -9,7 +9,14 @@ Overview
 - nearest (nearest point on any street segment of the road network)
 
 ###Installation
-- (under development)
+To add <tt>osrm-api-client</tt> as a locally per-project dependency you can insert the
+following code to your composer.json file:
+
+    {
+        "require": {
+            "jens-na/osrm-api-client": "1.0.0-alpha"
+        },
+    }
 
 ###API Usage Policy
 If you are using the server **router.project-osrm.org** with this API client, please read the 
