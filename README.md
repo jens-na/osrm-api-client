@@ -18,7 +18,7 @@ following code to your composer.json file:
     {
         "require": {
             "jens-na/osrm-api-client": "dev-master"
-        },
+        }
     }
 
 ###API Usage Policy
