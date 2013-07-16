@@ -23,6 +23,12 @@ class OsrmClient {
     
     private $server;
     
+    // hint data
+    private $hintChecksum;
+    private $hintLocation1;
+    private $hintLocation2;
+    private $lastCoordinate;
+    
     /**
      * The constructor with the OSRM server
      * @param string $server
@@ -141,9 +147,7 @@ class OsrmClient {
         curl_close($curl);
         
         $json = json_decode($resp);
-        
-        //var_dump($json);
-        
+              
         if($json->status === 0) {
             $route = new Route();
             $route->setEndPoint($json->route_summary->end_point);

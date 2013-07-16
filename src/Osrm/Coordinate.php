@@ -28,6 +28,7 @@ class Coordinate {
     private $longitude = 0.0;
     private $latitude = 0.0;
     private $name = "";
+    private $hintLocation;
     
     public function __construct($latitude, $longitude) {
         $this->longitude = $longitude;
@@ -61,8 +62,29 @@ class Coordinate {
         return $this;
     }
     
+    public function getHintLocation() {
+        return $this->hintLocation;
+    }
+
+    public function setHintLocation($hintLocation) {
+        $this->hintLocation = $hintLocation;
+        return $this;
+    }
+        
     public function __toString() {
-        return "loc=" . $this->latitude . "," . $this->longitude;
+        $ret = "loc=" . $this->latitude . "," . $this->longitude;
+        
+        if($this->hintLocation != null) {
+            $ret = $ret . "&hint=" . $this->hintLocation;
+        }
+        return $ret;
+    }
+    
+    public function equals(Coordinate $otherCoord) {
+        if($otherCoord->getLatitude() == $this->latitude &&
+                $otherCoord->getLongitude() == $this->longitude)
+            return true;
+        return false;
     }
 }
 
